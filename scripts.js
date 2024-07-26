@@ -1,45 +1,62 @@
-// Three.js background
+// Three.js setup
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('background'), alpha: true });
+const renderer = new THREE.WebGLRenderer({
+    canvas: document.querySelector('#bg'),
+    antialias: true
+});
 
+renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
+camera.position.setZ(30);
 
-const geometry = new THREE.BufferGeometry();
-const vertices = [];
+// Create a galaxy of particles
+const particlesGeometry = new THREE.BufferGeometry();
+const particlesCount = 5000;
 
-for (let i = 0; i < 10000; i++) {
-    const x = (Math.random() - 0.5) * 2000;
-    const y = (Math.random() - 0.5) * 2000;
-    const z = (Math.random() - 0.5) * 2000;
-    vertices.push(x, y, z);
+const posArray = new Float32Array(particlesCount * 3);
+
+for(let i = 0; i < particlesCount * 3; i++) {
+    posArray[i] = (Math.random() - 0.5) * 5;
 }
 
-geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
 
-const material = new THREE.PointsMaterial({ color: 0xFFFFFF, size: 0.7 });
-const points = new THREE.Points(geometry, material);
-scene.add(points);
+const particlesMaterial = new THREE.PointsMaterial({
+    size: 0.005,
+    color: 0x00ffff
+});
 
-camera.position.z = 1000;
+const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+scene.add(particlesMesh);
 
+// Lighting
+const ambientLight = new THREE.AmbientLight(0xffffff);
+scene.add(ambientLight);
+
+// Animation
 function animate() {
     requestAnimationFrame(animate);
-    points.rotation.x += 0.0005;
-    points.rotation.y += 0.0005;
+
+    particlesMesh.rotation.y += 0.001;
+    
+    // Create a wave effect
+    const elapsedTime = Date.now() * 0.001; // Current time in seconds
+    particlesMesh.rotation.z = Math.sin(elapsedTime * 0.5) * 0.1;
+
     renderer.render(scene, camera);
 }
 
 animate();
 
-// Resize handler
+// Handle window resizing
 window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
-// Smooth scrolling for anchor links
+// Smooth scrolling
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -47,6 +64,12 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             behavior: 'smooth'
         });
     });
+});
+
+// Parallax effect
+window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    particlesMesh.rotation.y = scrollY * 0.0005;
 });
 
 // Intersection Observer for fade-in animations
