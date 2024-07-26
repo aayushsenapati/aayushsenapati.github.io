@@ -1,25 +1,63 @@
-
-// Three.js setup
+// Three.js background
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer();
+const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('background'), alpha: true });
+
 renderer.setSize(window.innerWidth, window.innerHeight);
-document.getElementById('threejs-canvas').appendChild(renderer.domElement);
 
-// Add a rotating cube
-const geometry = new THREE.BoxGeometry();
-const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-const cube = new THREE.Mesh(geometry, material);
-scene.add(cube);
+const geometry = new THREE.BufferGeometry();
+const vertices = [];
 
-camera.position.z = 5;
+for (let i = 0; i < 10000; i++) {
+    const x = (Math.random() - 0.5) * 2000;
+    const y = (Math.random() - 0.5) * 2000;
+    const z = (Math.random() - 0.5) * 2000;
+    vertices.push(x, y, z);
+}
+
+geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+
+const material = new THREE.PointsMaterial({ color: 0xFFFFFF, size: 0.7 });
+const points = new THREE.Points(geometry, material);
+scene.add(points);
+
+camera.position.z = 1000;
 
 function animate() {
     requestAnimationFrame(animate);
-
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
-
+    points.rotation.x += 0.0005;
+    points.rotation.y += 0.0005;
     renderer.render(scene, camera);
 }
+
 animate();
+
+// Resize handler
+window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
+// Intersection Observer for fade-in animations
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in');
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('section').forEach(section => {
+    observer.observe(section);
+});

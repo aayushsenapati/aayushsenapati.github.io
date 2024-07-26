@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,92 +6,114 @@
     <title>Aayush Senapati - Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.13.0/devicon.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Aayush Senapati</h1>
-            <p>Software Developer (C/C++/Golang/Web3)</p>
-            <div class="social-icons">
-                <a href="https://github.com/aayushsenapati" target="_blank"><i class="fab fa-github"></i></a>
+    <canvas id="background"></canvas>
+    <div id="content">
+        <header>
+            <div class="container">
+                <h1 class="glitch" data-text="Aayush Senapati">Aayush Senapati</h1>
+                <p class="typing">Software Developer (C/C++/Golang/Web3)</p>
+                <div class="social-icons">
+                    <a href="https://github.com/aayushsenapati" target="_blank"><i class="fab fa-github"></i></a>
+                </div>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <section id="threejs-canvas"></section>
-
-    <section id="about">
-        <div class="container">
-            <h2>About Me</h2>
-            <p>I'm a dedicated software developer with a strong focus on C/C++, machine learning, systems, Big Data, and web3 technologies. I love building innovative software solutions and working on impactful projects. Currently, I'm working on a fast software repository manager for Arch Linux written in Rust.</p>
-        </div>
-    </section>
-
-    <section id="skills">
-        <div class="container">
-            <h2>Languages and Tools</h2>
-            <div class="skills">
-                <i class="devicon-c-plain"></i>
-                <i class="devicon-cplusplus-plain"></i>
-                <i class="devicon-go-plain"></i>
-                <i class="devicon-docker-plain"></i>
-                <i class="devicon-kubernetes-plain"></i>
-                <i class="devicon-amazonwebservices-plain"></i>
-                <i class="devicon-googlecloud-plain"></i>
-                <i class="devicon-firebase-plain"></i>
-                <i class="devicon-rust-plain"></i>
-                <i class="devicon-tensorflow-original"></i>
-                <i class="devicon-pytorch-original"></i>
-                <i class="devicon-opengl-plain"></i>
-                <i class="devicon-linux-plain"></i>
-                <i class="devicon-html5-plain"></i>
-                <i class="devicon-react-original"></i>
-                <i class="devicon-nextjs-original"></i>
-                <i class="devicon-neovim-original"></i>
-                <i class="devicon-flutter-plain"></i>
+        <section id="about">
+            <div class="container">
+                <h2>About Me</h2>
+                <p>I'm a dedicated software developer with a strong focus on C/C++, machine learning, systems, Big Data, and web3 technologies. I love building innovative software solutions and working on impactful projects. Currently, I'm working on a fast software repository manager for Arch Linux written in Rust.</p>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="projects">
-        <div class="container">
-            <h2>Projects</h2>
-            <ul>
-                <li>YADFS - High-performance distributed file system using Golang</li>
-                <li>P2PChat - P2P web3-based chatroom and video calling platform</li>
-                <li>3D Pong - Multiplayer 3D pong game using socket programming</li>
-                <li>QuickPick - A meal ordering and scheduling WhatsApp chat bot, app, and vendor interface</li>
-                <li>CacheSim - L1 cache simulator using OpenMP</li>
-                <li>Easy Threading API - A user-friendly threading API/library in C++ using pthreads</li>
-                <li>Automated Drive Backup - Using Kubernetes cron jobs to create periodic backups on Google Drive</li>
-            </ul>
-        </div>
-    </section>
+        <section id="skills">
+            <div class="container">
+                <h2>Languages and Tools</h2>
+                <div class="skills">
+                    <i class="devicon-c-plain" title="C"></i>
+                    <i class="devicon-cplusplus-plain" title="C++"></i>
+                    <i class="devicon-go-plain" title="Go"></i>
+                    <i class="devicon-docker-plain" title="Docker"></i>
+                    <i class="devicon-kubernetes-plain" title="Kubernetes"></i>
+                    <i class="devicon-amazonwebservices-plain" title="AWS"></i>
+                    <i class="devicon-googlecloud-plain" title="Google Cloud"></i>
+                    <i class="devicon-firebase-plain" title="Firebase"></i>
+                    <i class="devicon-rust-plain" title="Rust"></i>
+                    <i class="devicon-tensorflow-original" title="TensorFlow"></i>
+                    <i class="devicon-pytorch-original" title="PyTorch"></i>
+                    <i class="devicon-opengl-plain" title="OpenGL"></i>
+                    <i class="devicon-linux-plain" title="Linux"></i>
+                    <i class="devicon-html5-plain" title="HTML5"></i>
+                    <i class="devicon-react-original" title="React"></i>
+                    <i class="devicon-nextjs-original" title="Next.js"></i>
+                    <i class="devicon-neovim-original" title="Neovim"></i>
+                    <i class="devicon-flutter-plain" title="Flutter"></i>
+                </div>
+            </div>
+        </section>
 
-    <section id="achievements">
-        <div class="container">
-            <h2>Achievements</h2>
-            <ul>
-                <li>1st place at Hackloop (first hackathon of the season @ PESU)</li>
-                <li>Top 20 teams across India in Cisco ThingQbator startup incubator</li>
-                <li>1st place at Kodikon organized by Embrione PESU</li>
-                <li>Top 5 teams at InGenius21 @ PESU Electronic City</li>
-                <li>2nd place at Amithon organized by Amity University</li>
-                <li>4th place at Hashcode organized by PES Innovation Lab</li>
-                <li>Global Nominees for NASA Space Apps 2022 hackathon</li>
-                <li>Top 7 teams at Technophilia organized by Jadavpur University, Kolkata</li>
-            </ul>
-        </div>
-    </section>
+        <section id="projects">
+            <div class="container">
+                <h2>Projects</h2>
+                <div class="project-list">
+                    <div class="project-item">
+                        <h3>YADFS</h3>
+                        <p>High-performance distributed file system using Golang</p>
+                    </div>
+                    <div class="project-item">
+                        <h3>P2PChat</h3>
+                        <p>P2P web3-based chatroom and video calling platform</p>
+                    </div>
+                    <div class="project-item">
+                        <h3>3D Pong</h3>
+                        <p>Multiplayer 3D pong game using socket programming</p>
+                    </div>
+                    <div class="project-item">
+                        <h3>QuickPick</h3>
+                        <p>A meal ordering and scheduling WhatsApp chat bot, app, and vendor interface</p>
+                    </div>
+                    <div class="project-item">
+                        <h3>CacheSim</h3>
+                        <p>L1 cache simulator using OpenMP</p>
+                    </div>
+                    <div class="project-item">
+                        <h3>Easy Threading API</h3>
+                        <p>A user-friendly threading API/library in C++ using pthreads</p>
+                    </div>
+                    <div class="project-item">
+                        <h3>Automated Drive Backup</h3>
+                        <p>Using Kubernetes cron jobs to create periodic backups on Google Drive</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Aayush Senapati</p>
-        </div>
-    </footer>
+        <section id="achievements">
+            <div class="container">
+                <h2>Achievements</h2>
+                <ul class="achievement-list">
+                    <li>1st place at Hackloop (first hackathon of the season @ PESU)</li>
+                    <li>Top 20 teams across India in Cisco ThingQbator startup incubator</li>
+                    <li>1st place at Kodikon organized by Embrione PESU</li>
+                    <li>Top 5 teams at InGenius21 @ PESU Electronic City</li>
+                    <li>2nd place at Amithon organized by Amity University</li>
+                    <li>4th place at Hashcode organized by PES Innovation Lab</li>
+                    <li>Global Nominees for NASA Space Apps 2022 hackathon</li>
+                    <li>Top 7 teams at Technophilia organized by Jadavpur University, Kolkata</li>
+                </ul>
+            </div>
+        </section>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+        <footer>
+            <div class="container">
+                <p>&copy; 2024 Aayush Senapati</p>
+            </div>
+        </footer>
+    </div>
+
     <script src="scripts.js"></script>
 </body>
 </html>
