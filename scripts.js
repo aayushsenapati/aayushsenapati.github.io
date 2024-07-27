@@ -2,37 +2,70 @@
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('background'), alpha: true });
-
 renderer.setSize(window.innerWidth, window.innerHeight);
 
-const geometry = new THREE.BufferGeometry();
-const vertices = [];
+// Create a group to hold all objects
+const group = new THREE.Group();
+scene.add(group);
 
-for (let i = 0; i < 10000; i++) {
-    const x = (Math.random() - 0.5) * 2000;
-    const y = (Math.random() - 0.5) * 2000;
-    const z = (Math.random() - 0.5) * 2000;
-    vertices.push(x, y, z);
+// Create particles
+const particlesGeometry = new THREE.BufferGeometry();
+const particlesCnt = 5000;
+const posArray = new Float32Array(particlesCnt * 3);
+
+for (let i = 0; i < particlesCnt * 3; i++) {
+    posArray[i] = (Math.random() - 0.5) * 5;
 }
 
-geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+const particlesMaterial = new THREE.PointsMaterial({
+    size: 0.005,
+    color: 0x00fff9,
+    blending: THREE.AdditiveBlending,
+});
 
-const material = new THREE.PointsMaterial({ color: 0xFFFFFF, size: 0.7 });
-const points = new THREE.Points(geometry, material);
-scene.add(points);
+const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+group.add(particlesMesh);
 
-camera.position.z = 1000;
+// Add some larger, glowing particles
+const glowGeometry = new THREE.SphereGeometry(0.05, 32, 32);
+const glowMaterial = new THREE.MeshBasicMaterial({ color: 0xff00c1 });
+
+for (let i = 0; i < 20; i++) {
+    const glow = new THREE.Mesh(glowGeometry, glowMaterial);
+    glow.position.set(
+        (Math.random() - 0.5) * 5,
+        (Math.random() - 0.5) * 5,
+        (Math.random() - 0.5) * 5
+    );
+    group.add(glow);
+}
+
+camera.position.z = 2;
+
+// Mouse movement effect
+let mouseX = 0;
+let mouseY = 0;
+
+document.addEventListener('mousemove', (event) => {
+    mouseX = event.clientX / window.innerWidth - 0.5;
+    mouseY = event.clientY / window.innerHeight - 0.5;
+});
 
 function animate() {
     requestAnimationFrame(animate);
-    points.rotation.x += 0.0005;
-    points.rotation.y += 0.0005;
+
+    group.rotation.y += 0.002;
+    group.rotation.x += 0.001;
+
+    group.rotation.y += mouseX * 0.01;
+    group.rotation.x += -mouseY * 0.01;
+
     renderer.render(scene, camera);
 }
 
 animate();
 
-// Resize handler
 window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
@@ -61,3 +94,28 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('section').forEach(section => {
     observer.observe(section);
 });
+
+// Parallax effect
+window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    document.body.style.backgroundPositionY = `${scrollY * 0.5}px`;
+});
+
+// Dynamic subtitle
+const subtitles = [
+    "Software Developer",
+    "C/C++ Enthusiast",
+    "Golang Expert",
+    "Web3 Developer"
+];
+
+let currentSubtitle = 0;
+const subtitleElement = document.getElementById('dynamic-subtitle');
+
+function changeSubtitle() {
+    subtitleElement.textContent = subtitles[currentSubtitle];
+    currentSubtitle = (currentSubtitle + 1) % subtitles.length;
+}
+
+setInterval(changeSubtitle, 3000);
+changeSubtitle(); // Initial call
