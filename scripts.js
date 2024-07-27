@@ -10,17 +10,17 @@ scene.add(group);
 
 // Create particles
 const particlesGeometry = new THREE.BufferGeometry();
-const particlesCnt = 5000;
+const particlesCnt = 100; // Further reduced particle count
 const posArray = new Float32Array(particlesCnt * 3);
 
 for (let i = 0; i < particlesCnt * 3; i++) {
-    posArray[i] = (Math.random() - 0.5) * 5;
+    posArray[i] = (Math.random() - 0.5) * 100; // Spread remains the same
 }
 
 particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
 const particlesMaterial = new THREE.PointsMaterial({
-    size: 0.005,
-    color: 0x00fff9,
+    size: 0.2, // Adjust size if needed
+    color: 0x00ffff, // Better color for dark theme
     blending: THREE.AdditiveBlending,
 });
 
@@ -28,20 +28,20 @@ const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
 group.add(particlesMesh);
 
 // Add some larger, glowing particles
-const glowGeometry = new THREE.SphereGeometry(0.05, 32, 32);
-const glowMaterial = new THREE.MeshBasicMaterial({ color: 0xff00c1 });
+const glowGeometry = new THREE.SphereGeometry(0.5, 32, 32);
+const glowMaterial = new THREE.MeshBasicMaterial({ color: 0xff00ff }); // Better color for dark theme
 
-for (let i = 0; i < 20; i++) {
+for (let i = 0; i < 5; i++) { // Further reduced count
     const glow = new THREE.Mesh(glowGeometry, glowMaterial);
     glow.position.set(
-        (Math.random() - 0.5) * 5,
-        (Math.random() - 0.5) * 5,
-        (Math.random() - 0.5) * 5
+        (Math.random() - 0.5) * 100,
+        (Math.random() - 0.5) * 100,
+        (Math.random() - 0.5) * 100
     );
     group.add(glow);
 }
 
-camera.position.z = 2;
+camera.position.z = 50;
 
 // Mouse movement effect
 let mouseX = 0;
@@ -55,8 +55,8 @@ document.addEventListener('mousemove', (event) => {
 function animate() {
     requestAnimationFrame(animate);
 
-    group.rotation.y += 0.002;
-    group.rotation.x += 0.001;
+    group.rotation.y += 0.00005; // Further reduced speed
+    group.rotation.x += 0.00005; // Further reduced speed
 
     group.rotation.y += mouseX * 0.01;
     group.rotation.x += -mouseY * 0.01;

@@ -29,6 +29,8 @@ body, html {
     padding: 40px 20px;
 }
 
+
+
 header {
     text-align: center;
     padding: 100px 0;
@@ -158,6 +160,27 @@ h2::after {
     background: linear-gradient(90deg, #ff00c1, #00fff9);
 }
 
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.skills-category {
+    border: 1px solid grey;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1); /* Transparent background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.skills-category h3 {
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #00fff9;
+}
+
 .skills {
     display: flex;
     flex-wrap: wrap;
@@ -198,6 +221,11 @@ h2::after {
     color: #00fff9;
 }
 
+.project-item p {
+    margin-top: 0;
+    color: #fdfdfd;
+}
+
 .achievement-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -225,7 +253,7 @@ h2::after {
 
 .achievement-item h3 {
     margin: 10px 0;
-    color: #ff00c1;
+    color: #dad6d9;
 }
 
 .achievement-item p {

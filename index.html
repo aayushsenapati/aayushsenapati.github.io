@@ -10,8 +10,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
-    <canvas id="background"></canvas>
+    
+    
     <div id="content">
+        <canvas id="background" class="webgl"></canvas>
         <header>
             <div class="container">
                 <h1 class="glitch" data-text="Aayush Senapati">Aayush Senapati</h1>
@@ -30,67 +32,100 @@
                 <p>I'm a dedicated software developer with a strong focus on C/C++, machine learning, systems, Big Data, and web3 technologies. I love building innovative software solutions and working on impactful projects. Currently, I'm working on a fast software repository manager for Arch Linux written in Rust.</p>
             </div>
         </section>
+        
 
         <section id="skills">
             <div class="container">
-                <h2>Languages and Tools</h2>
+              <h2>Languages and Tools</h2>
+              <div class="skills-category">
+                <h3>Programming Languages</h3>
                 <div class="skills">
-                    <i class="devicon-c-plain" title="C"></i>
-                    <i class="devicon-cplusplus-plain" title="C++"></i>
-                    <i class="devicon-go-plain" title="Go"></i>
-                    <i class="devicon-docker-plain" title="Docker"></i>
-                    <i class="devicon-kubernetes-plain" title="Kubernetes"></i>
-                    <i class="devicon-amazonwebservices-plain" title="AWS"></i>
-                    <i class="devicon-googlecloud-plain" title="Google Cloud"></i>
-                    <i class="devicon-firebase-plain" title="Firebase"></i>
-                    <i class="devicon-rust-plain" title="Rust"></i>
-                    <i class="devicon-tensorflow-original" title="TensorFlow"></i>
-                    <i class="devicon-pytorch-original" title="PyTorch"></i>
-                    <i class="devicon-opengl-plain" title="OpenGL"></i>
-                    <i class="devicon-linux-plain" title="Linux"></i>
-                    <i class="devicon-html5-plain" title="HTML5"></i>
-                    <i class="devicon-react-original" title="React"></i>
-                    <i class="devicon-nextjs-plain"></i>
-                    <i class="devicon-flutter-plain" title="Flutter"></i>
-                    <i class="devicon-nodejs-plain" title="Node.js"></i> 
-                    <i class="devicon-neovim-plain" title="Neovim"></i>
-                    <i class="devicon-python-plain"></i>
+                  <i class="devicon-c-plain" title="C"></i>
+                  <i class="devicon-cplusplus-plain" title="C++"></i>
+                  <i class="devicon-go-plain" title="Go"></i>
+                  <i class="devicon-rust-plain" title="Rust"></i>
+                  <i class="devicon-python-plain" title="Python"></i>
                 </div>
+              </div>
+              <div class="skills-category">
+                <h3>DevOps Tools</h3>
+                <div class="skills">
+                  <i class="devicon-docker-plain" title="Docker"></i>
+                  <i class="devicon-kubernetes-plain" title="Kubernetes"></i>
+                  <i class="devicon-amazonwebservices-plain" title="AWS"></i>
+                  <i class="devicon-googlecloud-plain" title="Google Cloud"></i>
+                  <i class="devicon-firebase-plain" title="Firebase"></i>
+                </div>
+              </div>
+              <div class="skills-category">
+                <h3>Frameworks and Libraries</h3>
+                <div class="skills">
+                  <i class="devicon-tensorflow-original" title="TensorFlow"></i>
+                  <i class="devicon-pytorch-original" title="PyTorch"></i>
+                  <i class="devicon-opengl-plain" title="OpenGL"></i>
+                  <i class="devicon-react-original" title="React"></i>
+                  <i class="devicon-nextjs-plain" title="Next.js"></i>
+                  <i class="devicon-flutter-plain" title="Flutter"></i>
+                  <i class="devicon-nodejs-plain" title="Node.js"></i>
+                </div>
+              </div>
+              <div class="skills-category">
+                <h3>Other Tools</h3>
+                <div class="skills">
+                  <i class="devicon-linux-plain" title="Linux"></i>
+                  <i class="devicon-html5-plain" title="HTML5"></i>
+                  <i class="devicon-neovim-plain" title="Neovim"></i>
+                </div>
+              </div>
             </div>
-        </section>
+          </section>
 
         <section id="projects">
             <div class="container">
                 <h2>Projects</h2>
                 <div class="project-list">
-                    <div class="project-item">
-                        <h3>YADFS</h3>
-                        <p>High-performance distributed file system using Golang</p>
-                    </div>
-                    <div class="project-item">
-                        <h3>P2PChat</h3>
-                        <p>P2P web3-based chatroom and video calling platform</p>
-                    </div>
-                    <div class="project-item">
-                        <h3>3D Pong</h3>
-                        <p>Multiplayer 3D pong game using socket programming</p>
-                    </div>
-                    <div class="project-item">
-                        <h3>QuickPick</h3>
-                        <p>A meal ordering and scheduling WhatsApp chat bot, app, and vendor interface</p>
-                    </div>
-                    <div class="project-item">
-                        <h3>CacheSim</h3>
-                        <p>L1 cache simulator using OpenMP</p>
-                    </div>
-                    <div class="project-item">
-                        <h3>Easy Threading API</h3>
-                        <p>A user-friendly threading API/library in C++ using pthreads</p>
-                    </div>
-                    <div class="project-item">
-                        <h3>Automated Drive Backup</h3>
-                        <p>Using Kubernetes cron jobs to create periodic backups on Google Drive</p>
-                    </div>
+                    <a href="https://github.com/aayushsenapati/yadfs" target="_blank" class="project-item">
+                        <div>
+                            <h3>YADFS</h3>
+                            <p>High-performance distributed file system using Golang</p>
+                        </div>
+                    </a>
+                    <a href="https://github.com/aayushsenapati/P2P" target="_blank" class="project-item">
+                        <div>
+                            <h3>P2PChat</h3>
+                            <p>P2P web3-based chatroom and video calling platform</p>
+                        </div>
+                    </a>
+                    <a href="https://github.com/aayushsenapati/Pong" target="_blank" class="project-item">
+                        <div>
+                            <h3>3D Pong</h3>
+                            <p>Multiplayer 3D pong game using socket programming</p>
+                        </div>
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=AYc9d111R_Y&ab_channel=Quickpick" target="_blank" class="project-item">
+                        <div>
+                            <h3>QuickPick</h3>
+                            <p>A meal ordering and scheduling WhatsApp chat bot, app, and vendor interface</p>
+                        </div>
+                    </a>
+                    <a href="https://github.com/aayushsenapati/CacheSim" target="_blank" class="project-item">
+                        <div>
+                            <h3>CacheSim</h3>
+                            <p>L1 cache simulator using OpenMP</p>
+                        </div>
+                    </a>
+                    <a href="https://github.com/aayushsenapati/thread-generics" target="_blank" class="project-item">
+                        <div>
+                            <h3>Easy Threading API</h3>
+                            <p>A user-friendly threading API/library in C++ using pthreads</p>
+                        </div>
+                    </a>
+                    <a href="https://github.com/aayushsenapati/drive-backup-util" target="_blank" class="project-item">
+                        <div>
+                            <h3>Automated Drive Backup</h3>
+                            <p>Using Kubernetes cron jobs to create periodic backups on Google Drive</p>
+                        </div>
+                    </a>
                 </div>
             </div>
         </section>
@@ -106,7 +141,7 @@
                     </div>
                     <div class="achievement-item">
                         <i class="fas fa-award"></i>
-                        <h3>Top 20 Teams</h3>
+                        <h3>Top 20 Teams across India</h3>
                         <p>Cisco ThingQbator startup incubator</p>
                     </div>
                     <div class="achievement-item">
